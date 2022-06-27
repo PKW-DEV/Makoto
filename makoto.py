@@ -8,7 +8,7 @@ load_dotenv('.env')
 load_dotenv(verbose=True)
 TOKEN = os.getenv('TOKEN')
 
-intents=intents=discord.Intents.all()
+intents=discord.Intents.all()
 bot = commands.Bot(command_prefix ="!", description ="Makoto", intents=intents)
 
 @bot.event
