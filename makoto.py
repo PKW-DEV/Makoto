@@ -10,7 +10,7 @@ TOKEN = os.getenv('TOKEN')
 
 intents=discord.Intents.all()
 bot = commands.Bot(command_prefix ="!", description ="Makoto", intents=intents)
-#test webhook
+
 @bot.event
 async def on_ready():
     print("MAKOTO started successfully !")
