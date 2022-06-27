@@ -19,7 +19,7 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
       with:
         source: "."
-        target: "/home/ubuntu/makoto"
+        target: "/home/ubuntu/Makoto"
 
     - name: restart bot
       uses: appleboy/ssh-action@master
