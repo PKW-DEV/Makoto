@@ -13,6 +13,8 @@ bot = commands.Bot(command_prefix ="!", description ="Makoto", intents=intents)
 
 @bot.event
 async def on_ready():
+    c = bot.get_channel(990927066377617439)
+    c.send("```MAKOTO STARTED SUCCESSFULLY```")
     print("MAKOTO started successfully !")
 
 @bot.event
