@@ -11,8 +11,6 @@ class member_join(commands.Cog):
 
     @commands.Cog.listener('on_member_join')
     async def join(self, member):
-        @bot.event
-        async def on_member_join(member):
-            role = discord.utils.get(member.guild.roles, name='✈️ | Membre')
-            await member.add_roles(role)
+        role = discord.utils.get(member.guild.roles, name='✈️ | Membre')
+        await member.add_roles(role)
 
