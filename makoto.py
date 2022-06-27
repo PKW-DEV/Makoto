@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands
+from discord_slash import SlashCommand
+from discord_slash.utils.manage_components import *
 
 import cogs.join
 
