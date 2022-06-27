@@ -9,7 +9,7 @@ class member_join(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.Cog.listener('on_member_join'):
+    @commands.Cog.listener('on_member_join')
     async def join(self, member):
         @bot.event
         async def on_member_join(member):
