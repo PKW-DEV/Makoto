@@ -25,7 +25,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    print(message)
+    print(message.content)
     """
     if bot.user.mentioned_in(message):
         chan = bot.get_channel(990909559906377729)
