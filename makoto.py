@@ -27,7 +27,7 @@ async def on_ready():
 async def on_message(message):
     print(message.content)
     if bot.user.mentioned_in(message):
-        if message.content in ("@here","@everyone")
+        if message.content in ("@here","@everyone"):
             print("dégage")
         else:
             chan = bot.get_channel(990909559906377729)
