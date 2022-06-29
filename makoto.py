@@ -29,7 +29,6 @@ async def on_message(message):
         if message.content in ("@here","@everyone"):
             return
         else:
-            chan = bot.get_channel(990909559906377729)
             await message.channel.send(f"Hello ! Je suis plein developpement, certaines fonctionnalités ne sont donc pas disponible, regarde le channel {chan.mention} pour suivre mon developpement !")
 
 
