@@ -20,8 +20,8 @@ slash = SlashCommand(bot, sync_commands=True)
 @bot.event
 async def on_ready():
     guild = bot.get_guild(880887626205380618)
+    r = discord.utils.get(guild.roles, name="Non vérifié")
     for c in guild.channels:
-        r = discord.utils.get(guild.roles, name="Non vérifié")
         await c.set_permissions(r, read_message=False)
         print(f"{c} add non verifié read_message in false")
 
