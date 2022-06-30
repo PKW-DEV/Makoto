@@ -19,13 +19,6 @@ slash = SlashCommand(bot, sync_commands=True)
 
 @bot.event
 async def on_ready():
-    guild = bot.get_guild(880887626205380618)
-    r = discord.utils.get(guild.roles, name="Non vérifié")
-    for chan in guild.channels:
-
-        await chan.set_permissions(r, read_message=False)
-        print(f"{c} add non verifié read_message in false")
-
     c = bot.get_channel(990927066377617439)
     await c.send("```MAKOTO STARTED SUCCESSFULLY```")
     print("MAKOTO started successfully !")
@@ -38,6 +31,13 @@ async def on_message(message):
         else:
             await message.channel.send(f"Hello ! Je suis plein developpement, certaines fonctionnalités ne sont donc pas disponible, regarde le channel {chan.mention} pour suivre mon developpement !")
 
+@bot.command()
+async def locknv(ctx):
+    guild = ctx.guild
+    r = discord.utils.get(guild.roles, name="Non vérifié")
+    for chan in guild.channels:
+        await chan.set_permissions(r, read_message=False)
+        print(f"{c} add non verifié read_message in false")
 
 bot.add_cog(cogs.join.member_join(bot))
 bot.run(TOKEN)
