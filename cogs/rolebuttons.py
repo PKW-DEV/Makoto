@@ -3,9 +3,6 @@ from discord.ext import commands
 from discord_slash import SlashCommand
 from discord_slash.utils.manage_components import *
 
-adminid = (264335766216376320)
-
-
 class role_button(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -13,7 +10,7 @@ class role_button(commands.Cog):
     async def cog_check(self, ctx):
         user = ctx.author
         identifiant = user.id
-        return identifiant in adminid
+        return identifiant == 264335766216376320
 
     @commands.command()
     async def createrolebutton(self,ctx):
