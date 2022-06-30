@@ -9,7 +9,7 @@ class role_button(commands.Cog):
 
     @commands.command()
     async def createrolebutton(self,ctx):
-        chan = ctx.chan
+        chan = ctx.channel
         embed1 = discord.Embed(
             title="Ci-dessous un menu déroulant vous permettant de faire un ticket dans la catégorie de votre choix.",
             color=0xB90000)
