@@ -15,7 +15,7 @@ class role_button(commands.Cog):
     @commands.command()
     async def createrolebutton(self,ctx):
         embed = discord.Embed(
-            title="Hello, veuilliez choisir les jeux auquelles vous jouez ! 💜​",
+            title="Hello, choisi un ou des jeux que tu as ! 💜​",
             color=0xAD0DE4)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
