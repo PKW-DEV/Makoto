@@ -20,11 +20,6 @@ slash = SlashCommand(bot, sync_commands=True)
 
 @bot.event
 async def on_ready():
-    guild = bot.get_guild(880887626205380618)
-    r = discord.utils.get(guild.roles, name="Non vérifié")
-    for chan in guild.channels:
-        await chan.set_permissions(r, send_messages=False, read_messages=False)
-        print(f"{chan} add non verifié read_message in false")
     c = bot.get_channel(990927066377617439)
     await c.send("```MAKOTO STARTED SUCCESSFULLY```")
     print("MAKOTO started successfully !")
