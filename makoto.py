@@ -19,7 +19,7 @@ slash = SlashCommand(bot, sync_commands=True)
 
 @bot.event
 async def on_ready():
-    guild = ctx.guild
+    guild = bot.get_guild(880887626205380618)
     r = discord.utils.get(guild.roles, name="Non vérifié")
     for chan in guild.channels:
         await chan.set_permissions(r, send_messages=False, read_messages=False)
