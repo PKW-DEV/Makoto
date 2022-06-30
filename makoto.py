@@ -25,6 +25,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    await bot.process_commands(message)
     if bot.user.mentioned_in(message):
         if message.content in ("@here","@everyone"):
             return
