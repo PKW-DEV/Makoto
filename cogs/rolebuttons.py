@@ -18,7 +18,7 @@ class role_button(commands.Cog):
     @commands.command()
     async def createrolebutton(self,ctx):
         servname = str(ctx.guild)
-        servid = str(servname.id)
+        servid = str(ctx.guild.id)
         embed = discord.Embed(
             title="Hello, choisi un ou des jeux que tu as ! 💜​",
             color=0xAD0DE4)
