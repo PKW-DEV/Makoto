@@ -29,7 +29,7 @@ class role_button(commands.Cog):
 
     @commands.command()
     async def addrole(self, ctx, role : discord.Role, e):
-        servid = ctx.guild.id
+        servid = (str(ctx.guild.id),)
         c = database_handler.get_message(servid)
         chan = c[0][0]
         embed = discord.Embed(
