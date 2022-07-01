@@ -17,14 +17,14 @@ class role_button(commands.Cog):
 
     @commands.command()
     async def createrolebutton(self,ctx):
-        servname = ctx.guild
-        servid = servname.id
+        servname = str(ctx.guild)
+        servid = str(servname.id)
         embed = discord.Embed(
             title="Hello, choisi un ou des jeux que tu as ! 💜​",
             color=0xAD0DE4)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         msg = await ctx.send(embed=embed)
-        messid = msg.id
+        messid = str(msg.id)
         database_handler.add_message(servname, servid, messid)
 
     @commands.command()
