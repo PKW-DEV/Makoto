@@ -29,10 +29,18 @@ class role_button(commands.Cog):
 
     @commands.command()
     async def addrole(self, ctx, role : discord.Role, e):
+        servid = str(ctx.guild.id)
+        c = database_handler.get_message(servid)
+        chan = c[0][0]
         embed = discord.Embed(
-            title="Pour choisir le  ",
+            title="Hello, choisi un ou des jeux que tu as ! 💜​",
             color=0xAD0DE4)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        embed = discord.Embed(
+            title=f"Pour choisir le jeu {role} utilise l'émojie {e}  ",
+            color=0xAD0DE4)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        c.edit(embed=embed)
         print(role)
         print(role.id)
         print(e)
