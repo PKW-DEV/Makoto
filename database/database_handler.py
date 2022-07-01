@@ -35,7 +35,7 @@ class DatabaseHandler():
         self.con.close()
         print("MAKOTO | add new message for role menu")
 
-    def get_message(self, servid):
+    def get_message(self, servid ):
         self.con.connect()
         cursor = self.con.cursor()
         query = f"SELECT messid FROM makoto_rolebutton_serv WHERE servid = %s;"
