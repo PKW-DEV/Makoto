@@ -3,6 +3,9 @@ from discord.ext import commands
 from discord_slash import SlashCommand
 from discord_slash.utils.manage_components import *
 
+from database.database_handler import DatabaseHandler
+database_handler = DatabaseHandler()
+
 class role_button(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -14,11 +17,15 @@ class role_button(commands.Cog):
 
     @commands.command()
     async def createrolebutton(self,ctx):
+        servname = ctx.guild
+        servid = servname.id
         embed = discord.Embed(
             title="Hello, choisi un ou des jeux que tu as ! 💜​",
             color=0xAD0DE4)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
-        await ctx.send(embed=embed)
+        msg = await ctx.send(embed=embed)
+        messid = msg.id
+        database_handler.add_message(servname, servid, messid)
 
     @commands.command()
     async def addrole(self, ctx, role : discord.Role, e):
@@ -26,3 +33,6 @@ class role_button(commands.Cog):
             title="Pour choisir le  ",
             color=0xAD0DE4)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        print(role)
+        print(role.id)
+        print(e)
