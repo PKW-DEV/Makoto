@@ -31,7 +31,7 @@ class role_button(commands.Cog):
     async def addrole(self, ctx, role : discord.Role, e):
         servid = (str(ctx.guild.id),)
         c = database_handler.get_message(servid)
-        chan = int(c[0][0])
+        chan = self.bot.get_channel(int(c[0][0]))
         embed = discord.Embed(
             title="Hello, choisi un ou des jeux que tu as ! 💜​",
             color=0xAD0DE4)
