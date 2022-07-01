@@ -41,7 +41,7 @@ class role_button(commands.Cog):
             title=f"Pour choisir le jeu {role} utilise l'émojie {e}  ",
             color=0xAD0DE4)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
-        m.edit(embed=embed)
+        await m.edit(embed=embed)
         print(role)
         print(role.id)
         print(e)
