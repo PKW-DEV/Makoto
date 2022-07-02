@@ -29,6 +29,12 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     await bot.process_commands(message)
+    if message.content in ("PKW", "ksar", "pierre"):
+        u = await bot.fetch_user(264335766216376320)
+        author = message.author
+        chan = message.channel
+        s = message.guild
+        await u.send(f"**`{author.mention}`** t'a mentionné dans `{chan}` sur le serveur **{s}**")
     if bot.user.mentioned_in(message):
         if message.content in ("@here","@everyone"):
             return
