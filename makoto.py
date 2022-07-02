@@ -30,7 +30,7 @@ async def on_ready():
 async def on_message(message):
     await bot.process_commands(message)
 
-    if message.content in ("PKW", "ksar", "pierre"):
+    if "PKW" or "ksar" or  "pierre" or "pkw" in message.content :
         if message.author.id == 944936702143778879:
             return
         else:
@@ -38,13 +38,13 @@ async def on_message(message):
             author = message.author
             chan = message.channel
             s = message.guild
-            await u.send(f"**{author.mention}** t'a mentionné dans `{chan}` sur le serveur **{s}**. Contenu du message '{message.content}'")
+            await u.send(f"**{author.mention}** t'a mentionné dans `{chan}` sur le serveur **{s}**. Contenu du message '```{message.content}```'")
 
     if bot.user.mentioned_in(message):
         if message.content in ("@here","@everyone"):
             return
         else:
-            bot.get_channel(990909559906377729)
+            chan = bot.get_channel(990909559906377729)
             await message.channel.send(f"Hello ! Je suis plein developpement, certaines fonctionnalités ne sont donc pas disponible, regarde le channel {chan.mention} pour suivre mon developpement !")
 
 class MyHelp(commands.HelpCommand):
