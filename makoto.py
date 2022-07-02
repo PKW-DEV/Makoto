@@ -38,10 +38,10 @@ async def on_message(message):
             author = message.author
             chan = message.channel
             s = message.guild
-            await u.send(f"**{author.mention}** t'a mentionné dans `{chan}` sur le serveur **{s}**. Contenu du message '```{message.content}```'")
+            await u.send(f"WORD DETECTION | **{author.mention}** t'a mentionné dans `{chan}` sur le serveur **{s}**. Contenu du message ```{message.content}```")
 
     if bot.user.mentioned_in(message):
-        if message.content in ("@here","@everyone"):
+        if "@here" or "@everyone" in message.content:
             return
         else:
             chan = bot.get_channel(990909559906377729)
