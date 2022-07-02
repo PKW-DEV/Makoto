@@ -25,11 +25,11 @@ class DatabaseHandler():
             else:
                 print(err)
 
-    def add_message(self,servname, servid, messid):
+    def add_message(self,servname, servid, messid, chanid):
         self.con.connect()
         cursor = self.con.cursor()
-        query = f"INSERT INTO makoto_rolebutton_serv (servname, servid, messid) VALUES (%s,%s,%s);"
-        cursor.execute(query,(servname, servid, messid))
+        query = f"INSERT INTO makoto_rolebutton_serv (servname, servid, messid, chanid) VALUES (%s,%s,%s);"
+        cursor.execute(query,(servname, servid, messid, chanid))
         cursor.close()
         self.con.commit()
         self.con.close()
@@ -39,6 +39,16 @@ class DatabaseHandler():
         self.con.connect()
         cursor = self.con.cursor()
         query = f"SELECT messid FROM makoto_rolebutton_serv WHERE servid = %s;"
+        cursor.execute(query,(servid))
+        result = cursor.fetchall()
+        cursor.close()
+        self.con.close()
+        return result
+
+    def get_channel(self, servid ):
+        self.con.connect()
+        cursor = self.con.cursor()
+        query = f"SELECT chanid FROM makoto_rolebutton_serv WHERE servid = %s;"
         cursor.execute(query,(servid))
         result = cursor.fetchall()
         cursor.close()

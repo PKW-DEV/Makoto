@@ -19,20 +19,22 @@ class role_button(commands.Cog):
     async def createrolebutton(self,ctx):
         servname = str(ctx.guild)
         servid = str(ctx.guild.id)
+        chanid = str(ctx.channel.id)
         embed = discord.Embed(
             title="Hello, choisi un ou des jeux que tu as ! 💜​",
             color=0xAD0DE4)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         msg = await ctx.send(embed=embed)
         messid = str(msg.id)
-        database_handler.add_message(servname, servid, messid)
+        database_handler.add_message(servname, servid, messid,chanid)
 
     @commands.command()
     async def addrole(self, ctx, role : discord.Role, e):
         servid = (str(ctx.guild.id),)
-        c = database_handler.get_message(servid)
-        chan = self.bot.get_channel(992375281128046643)
-        m = await chan.fetch_message(int(c[0][0]))
+        msg = database_handler.get_message(servid)
+        c = database_handler.get_channel(servid)
+        chan = self.bot.get_channel(int(c[0][0]))
+        m = await chan.fetch_message(int(msg[0][0]))
         embed = discord.Embed(
             title="Hello, choisi un ou des jeux que tu as ! 💜​",
             color=0xAD0DE4)
