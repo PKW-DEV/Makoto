@@ -21,6 +21,8 @@ slash = SlashCommand(bot, sync_commands=True)
 @bot.event
 async def on_ready():
     c = bot.get_channel(990927066377617439)
+    u = await bot.fetch_user(264335766216376320)
+    await u.send("Makoto est de retour sur le web")
     await c.send("```MAKOTO STARTED SUCCESSFULLY```")
     print("MAKOTO started successfully !")
 
@@ -37,7 +39,7 @@ async def on_message(message):
 class MyHelp(commands.HelpCommand):
     async def send_bot_help(self, mapping):
         embed = discord.Embed(title="Aide aux commandes Makoto.", color=0xAD0DE4)
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        embed.set_footer(text=bot.user.name, icon_url=bot.user.avatar_url)
         for cog, commands in mapping.items():
            command_signatures = [self.get_command_signature(c) for c in commands]
            if command_signatures:
