@@ -37,10 +37,8 @@ class role_button(commands.Cog):
             title="Hello, choisi un ou des jeux que tu as ! 💜​",
             color=0xAD0DE4)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
-        embed = discord.Embed(
-            title=f"Pour choisir le jeu {role} utilise l'émojie {e}  ",
-            color=0xAD0DE4)
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        embed.add_field(name=f"Pour choisir le jeu {role} ", value=f"utilise l'émojie {e}.",
+                        inline=True)
         await m.edit(embed=embed)
         print(role)
         print(role.id)
