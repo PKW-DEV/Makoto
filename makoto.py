@@ -31,7 +31,7 @@ async def on_message(message):
     await bot.process_commands(message)
 
     if "PKW" or "ksar" or  "pierre" or "pkw" in message.content :
-        if message.author.id == 944936702143778879:
+        if 990916810108964864 or 944936702143778879 == message.author.id :
             return
         else:
             u = await bot.fetch_user(264335766216376320)
