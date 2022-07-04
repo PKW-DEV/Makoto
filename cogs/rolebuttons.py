@@ -26,7 +26,7 @@ class role_button(commands.Cog):
             color=0xAD0DE4)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         for r in role:
-            rl,e= r.split("・")
+            e,rl= r.split("・")
             embed.add_field(name=f"Pour choisir le role __{rl}__"  ,value=f"Appuyez sur le bouton {e}")
         await m.edit(embed=embed)
 
