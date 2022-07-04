@@ -28,7 +28,7 @@ class role_button(commands.Cog):
         for r in role:
             rl,e= r.split("・")
             embed.add_field(name=f"Pour choisir le role __{rl}__"  ,value=f"Appuyez sur le bouton {e}")
-        m.edit(embed=embed)
+        await m.edit(embed=embed)
 
     @commands.command()
     async def createrolebutton(self,ctx):
