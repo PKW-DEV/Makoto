@@ -22,12 +22,12 @@ class role_button(commands.Cog):
         c = self.bot.get_channel(992129409857368124)
         m = await c.fetch_message(992794698043379824)
         embed = discord.Embed(
-            title="> __Hello, choisi un ou des jeux que tu as ! 💜​__",
+            title="__Hello, choisi un ou des jeux que tu as ! 💜​__",
             color=0xAD0DE4)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
         for r in role:
             e,rl= r.split("・")
-            embed.add_field(name=f"Choisir le role __{rl}__"  ,value=f"> Appuye sur {e}")
+            embed.add_field(name=f"> Choisir le role __{rl}__"  ,value=f"> Appuye sur {e}")
         await m.edit(embed=embed)
 
     @commands.command()
