@@ -19,16 +19,16 @@ class role_button(commands.Cog):
 
     @commands.Cog.listener('on_ready')
     async def on_ready(self):
-    c = self.bot.get_channel(992129409857368124)
-    m = await c.fetch_message(992794698043379824)
-    embed = discord.Embed(
-        title="Hello, choisi un ou des jeux que tu as ! 💜​",
-        color=0xAD0DE4)
-    embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
-    for r in role:
-        rl,e= r.split("・")
-        embed.add_field(name=f"Pour choisir le role __{rl}__"  ,value=f"Appuyez sur le bouton {e}")
-    m.edit(embed=embed)
+        c = self.bot.get_channel(992129409857368124)
+        m = await c.fetch_message(992794698043379824)
+        embed = discord.Embed(
+            title="Hello, choisi un ou des jeux que tu as ! 💜​",
+            color=0xAD0DE4)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        for r in role:
+            rl,e= r.split("・")
+            embed.add_field(name=f"Pour choisir le role __{rl}__"  ,value=f"Appuyez sur le bouton {e}")
+        m.edit(embed=embed)
 
     @commands.command()
     async def createrolebutton(self,ctx):
