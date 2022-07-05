@@ -34,7 +34,7 @@ class role_button(commands.Cog):
                 style=ButtonStyle.grey,
                 label=f'{e}',
                 custom_id=f'{rl.lower()}'
-             )]
+             ),]
             b.append(button)
         act = create_actionrow(*b)
         await m.edit(embed=embed,)
