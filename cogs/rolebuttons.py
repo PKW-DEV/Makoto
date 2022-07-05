@@ -29,13 +29,12 @@ class role_button(commands.Cog):
         for r in role:
             e,rl= r.split("・")
             embed.add_field(name=f"> Choisir le role __{rl}__"  ,value=f"> Appuye sur {e}")
-            button = [
-             create_button(
+            button = create_button(
                 style=ButtonStyle.grey,
                 label=f'{e}',
                 custom_id=f'{rl.lower()}'
-             )]
-            b.append(slice(button))
+             )
+            b.append(button)
         act = create_actionrow(*b)
         await m.edit(embed=embed, components=[act])
 
