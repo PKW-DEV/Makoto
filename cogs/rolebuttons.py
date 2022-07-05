@@ -35,8 +35,8 @@ class role_button(commands.Cog):
                 label=f'{e}',
                 custom_id=f'{rl.lower()}'
              )]
-            b.append(button)
-        act = create_actionrow(slice(*b))
+            b.append(slice(button))
+        act = create_actionrow(*b)
         await m.edit(embed=embed, components=[act])
 
     @commands.command()
