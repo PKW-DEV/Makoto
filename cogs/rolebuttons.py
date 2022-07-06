@@ -34,6 +34,20 @@ class role_button(commands.Cog):
         act = create_actionrow(*b)
         await m.edit(embed=embed, components=[act])
 
+    @commands.Cog.listener('on_component')
+    async def on_component(self, ctx):
+        await ctx.defer(
+            ignore=True
+        )
+        ide = ctx.component["custom_id"]
+        for r in role:
+            e,rl = r.split("・")
+            if ide == str(rl):
+                print("role trouvé")
+            else:
+                print("role pas trouvé mon reuf")
+
+
     @commands.command()
     async def createrolebutton(self,ctx):
         servname = str(ctx.guild)
