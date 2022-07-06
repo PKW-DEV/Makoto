@@ -43,8 +43,7 @@ class role_button(commands.Cog):
         print(ide)
         for r in role:
             e,rl = r.split("・")
-            print("rl=",rl)
-            if ide == rl:
+            if ide == rl.lower():
                 print("role trouvé")
             else:
                 print("role pas trouvé mon reuf")
