@@ -44,7 +44,7 @@ class role_button(commands.Cog):
         for r in role:
             e,rl = r.split("・")
             if ide == rl.lower():
-                a = discord.utils.get(member.guild.roles, name=r)
+                a = discord.utils.get(ctx.auhor.guild.roles, name=r)
                 await ctx.author.add_roles(a)
 
 
