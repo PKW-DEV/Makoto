@@ -47,7 +47,7 @@ class role_button(commands.Cog):
             for g in ro:
                 if str(g) == r:
                     await ctx.send("Tu as déjà le role, je te l'ai donc retiré !", hidden=True)
-                    await self.bot.remove_roles(ctx.author, r)
+                    await ctx.author.remove_roles(a)
                     return
             e,rl = r.split("・")
             if ide == rl.lower():
