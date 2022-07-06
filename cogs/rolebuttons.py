@@ -47,11 +47,13 @@ class role_button(commands.Cog):
                 if str(g) == r:
                     await ctx.send("Tu as déjà le role, je te l'ai donc retiré !", hidden=True)
                     await ctx.author.remove_roles(a)
+                    print("a")
                     return
             e,rl = r.split("・")
             if ide == rl.lower():
                 await ctx.author.add_roles(a)
                 await ctx.send(f"Le role **{r}** t'a été ajouté avec succès !", hidden=True)
+                print("b")
 
     @commands.command()
     async def createrolebutton(self,ctx):
