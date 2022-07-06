@@ -6,7 +6,7 @@ from discord_slash.utils.manage_components import *
 from database.database_handler import DatabaseHandler
 database_handler = DatabaseHandler()
 
-role = ("🏝️​・Raft","🏯​・Genshin","🟦​​・Gmod","​🪖​・R6S","🟣​・osu")
+role = ("🏝️​・Raft","🏯​・Genshin","🟦​​・Gmod","​🪖​・R6S","🟣​・osu!", "🚗 Rocket League", "⭐️ Apex Legends")
 
 class role_button(commands.Cog):
     def __init__(self, bot):
