@@ -44,9 +44,8 @@ class role_button(commands.Cog):
         for r in role:
             e,rl = r.split("・")
             if ide == rl.lower():
-                print("role trouvé")
-            else:
-                print("role pas trouvé mon reuf")
+                a = discord.utils.get(member.guild.roles, name=r)
+                await ctx.author.add_roles(a)
 
 
     @commands.command()
