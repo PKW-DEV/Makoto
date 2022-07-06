@@ -40,7 +40,6 @@ class role_button(commands.Cog):
             ignore=True
         )
         ide = ctx.component["custom_id"]
-        print(ide)
         ro = ctx.author.roles
         for r in role:
             a = discord.utils.get(ctx.author.guild.roles, name=r)
