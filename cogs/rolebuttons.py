@@ -46,7 +46,7 @@ class role_button(commands.Cog):
             if ide == rl.lower():
                 a = discord.utils.get(ctx.author.guild.roles, name=r)
                 await ctx.author.add_roles(a)
-
+                await ctx.send(f"Le role **{r}** t'a été ajouté avec succès !", hidden = True)
 
     @commands.command()
     async def createrolebutton(self,ctx):
