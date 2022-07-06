@@ -40,9 +40,10 @@ class role_button(commands.Cog):
             ignore=True
         )
         ide = ctx.component["custom_id"]
+        print(ide)
         for r in role:
             e,rl = r.split("・")
-            if ide == str(rl):
+            if ide == rl:
                 print("role trouvé")
             else:
                 print("role pas trouvé mon reuf")
