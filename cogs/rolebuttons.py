@@ -25,14 +25,13 @@ class role_button(commands.Cog):
             title="__Hello, choisi un ou des jeux que tu as ! 💜​__",
             color=0xAD0DE4)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
-        b = []
         for r in role:
             e,rl= r.split("・")
             embed.add_field(name=f"> Choisir le role __{rl}__"  ,value=f"> Appuye sur {e}")
-            button = create_button(style=ButtonStyle.grey, label=f'{e}',custom_id=f'{rl.lower()}')
-            b.append(button)
-        act = create_actionrow(*b)
-        await m.edit(embed=embed, components=[act])
+        await m.edit(embed=embed)
+        for r in role:
+            e,rl= r.split("・")
+            await m.add_reaction(e)
 
     @commands.Cog.listener('on_component')
     async def on_component(self, ctx):
