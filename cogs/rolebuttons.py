@@ -31,7 +31,7 @@ class role_button(commands.Cog):
         await m.edit(embed=embed)
         for r in role:
             e,rl= r.split("・")
-            await m.add_reaction(e)
+            await m.add_reaction(str(e))
 
     @commands.Cog.listener('on_component')
     async def on_component(self, ctx):
