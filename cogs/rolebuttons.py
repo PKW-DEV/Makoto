@@ -20,7 +20,7 @@ class role_button(commands.Cog):
     @commands.Cog.listener('on_ready')
     async def on_ready(self):
         c = self.bot.get_channel(992129409857368124)
-        m = await c.fetch_message(992794698043379824)
+        m = await c.fetch_message(995395438083584020)
         embed = discord.Embed(
             title="__Hello, choisi un ou des jeux que tu as ! 💜​__",
             color=0xAD0DE4)
@@ -33,6 +33,19 @@ class role_button(commands.Cog):
             e,rl= r.split("・")
             em = e.strip("​")
             await m.add_reaction(em)
+
+    @commands.Cog.listener('on_raw_reaction_add')
+    async def on_raw_reaction_add(self, payload):
+        if payload.channel_id == 992129409857368124:
+            for r in role:
+                e,rl= r.split("・")
+                em = e.strip("​")
+                if payload.emoji.name == em:
+                    g = payload.guild_id
+                    guild = self.bot.get_guild(g)
+                    a = discord.utils.get(guild.roles, name=r)
+                    await payload.member.add_roles(a)
+                    await payload.member.send(f"Le role **{r}** t'a été ajouté avec succès !")
 
     @commands.Cog.listener('on_component')
     async def on_component(self, ctx):

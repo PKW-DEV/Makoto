@@ -13,8 +13,8 @@ load_dotenv(verbose=True)
 TOKEN = os.getenv('TOKEN')
 
 
-intents=discord.Intents.all()
-bot = commands.Bot(command_prefix ="!", description ="Makoto", intents=intents)
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix="!", description="Makoto", intents=intents)
 slash = SlashCommand(bot, sync_commands=True)
 
 
