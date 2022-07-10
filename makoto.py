@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord_slash import SlashCommand
 from discord_slash.utils.manage_components import *
 
+import cogs.logs
 import cogs.rolebuttons
 import cogs.join
 
@@ -22,23 +23,22 @@ slash = SlashCommand(bot, sync_commands=True)
 async def on_ready():
     c = bot.get_channel(990927066377617439)
     u = await bot.fetch_user(264335766216376320)
-    await u.send("Makoto est de retour sur le web")
-    await c.send("```MAKOTO STARTED SUCCESSFULLY```")
+    #await u.send("Makoto est de retour sur le web")
+    #await c.send("```MAKOTO STARTED SUCCESSFULLY```")
     print("MAKOTO started successfully !")
 
 @bot.event
 async def on_message(message):
     await bot.process_commands(message)
-
-    if "PKW" or "ksar" or  "pierre" or "pkw" in message.content :
-        if 990916810108964864 or 944936702143778879 == message.author.id :
+    if "PKW" or "ksar" or "pierre" or "pkw" in message.content :
+        if 944936702143778879 == message.author.id :
             return
         else:
             u = await bot.fetch_user(264335766216376320)
             author = message.author
             chan = message.channel
             s = message.guild
-            await u.send(f"WORD DETECTION | **{author.mention}** t'a mentionné dans `{chan}` sur le serveur **{s}**. Contenu du message ```{message.content}```")
+            await u.send(f"WORD DETECTION | **{author.mention}** t'a mentionné dans {chan.mention} sur le serveur **{s}**. Contenu du message ```{message.content}```")
 
     if bot.user.mentioned_in(message):
         if "@here" or "@everyone" in message.content:
@@ -62,7 +62,7 @@ class MyHelp(commands.HelpCommand):
 
 bot.help_command = MyHelp()
 
-
+bot.add_cog(cogs.logs.logs(bot))
 bot.add_cog(cogs.rolebuttons.role_button(bot))
 bot.add_cog(cogs.join.member_join(bot))
 bot.run(TOKEN)
