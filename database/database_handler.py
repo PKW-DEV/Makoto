@@ -24,6 +24,36 @@ class DatabaseHandler():
                 print("La DB existe pas")
             else:
                 print(err)
+################### GENSHIN #########################
+
+    def check_if_user_exit(self, discord_user_id):
+        self.con.connect()
+        cursor = self.con.cursor()
+        query = f"SELECT * FROM makoto_genshin WHERE discord_user_id = %s;"
+        cursor.execute(query,(discord_user_id))
+        result = cursor.fetchall()
+        cursor.close()
+        self.con.close()
+        return len(result) == 1
+
+    def add_user(self,username, ar, uid, discord_user_id):
+        self.con.connect()
+        cursor = self.con.cursor()
+        query = f"INSERT INTO makoto_genshin (username, ar, uid, discord_user_id) VALUES (%s,%s,%s,%s);"
+        cursor.execute(query, (username, ar, uid, discord_user_id))
+        cursor.close()
+        self.con.commit()
+        self.con.close()
+
+    def check_profil_user(self, discord_user_id):
+        self.con.connect()
+        cursor = self.con.cursor()
+        query = f"SELECT * FROM makoto_genshin WHERE discord_user_id = %s;"
+        cursor.execute(query,(discord_user_id))
+        result = cursor.fetchall()
+        cursor.close()
+        self.con.close()
+        return result
 
     def add_message(self,servname, servid, messid, chanid):
         self.con.connect()

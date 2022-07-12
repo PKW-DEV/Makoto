@@ -34,6 +34,7 @@ class role_button(commands.Cog):
             em = e.strip("​")
             await m.add_reaction(em)
 
+
     @commands.Cog.listener('on_raw_reaction_add')
     async def on_raw_reaction_add(self, payload):
         if payload.channel_id == 992129409857368124:
@@ -70,33 +71,10 @@ class role_button(commands.Cog):
                 await ctx.send(f"Le role **{r}** t'a été ajouté avec succès !", hidden=True)
                 print("b")
 
-    @commands.command()
-    async def createrolebutton(self,ctx):
-        servname = str(ctx.guild)
-        servid = str(ctx.guild.id)
-        chanid = str(ctx.channel.id)
-        embed = discord.Embed(
-            title="Hello, choisi un ou des jeux que tu as ! 💜​",
-            color=0xAD0DE4)
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
-        msg = await ctx.send(embed=embed)
-        messid = str(msg.id)
-        database_handler.add_message(servname, servid, messid, chanid)
-
-    @commands.command()
-    async def addrole(self, ctx, role : discord.Role, e):
-        servid = (str(ctx.guild.id),)
-        msg = database_handler.get_message(servid)
-        c = database_handler.get_channel(servid)
-        chan = self.bot.get_channel(int(c[0][0]))
-        m = await chan.fetch_message(int(msg[0][0]))
-        embed = discord.Embed(
-            title="Hello, choisi un ou des jeux que tu as ! 💜​",
-            color=0xAD0DE4)
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
-        embed.add_field(name=f"Pour choisir le jeu {role} ", value=f"utilise l'émojie {e}.",
-                        inline=True)
-        await m.edit(embed=embed)
-        print(role)
-        print(role.id)
-        print(e)
+    @commands.command(brief='Commande administrateur pour creation des channels')
+    async def crc(self, ctx):
+        g = ctx.guild
+        for r in role:
+            c = discord.utils.get(g.category, name=str(r))
+            await g.create_voice_channel(f'{r}', category=c)
+        await ctx.send('La création des channels pour chacuns des rôles de jeux a été réalisé avec succès')
