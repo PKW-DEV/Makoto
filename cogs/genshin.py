@@ -37,7 +37,7 @@ class genshin(commands.Cog):
         else:
             p = database_handler.check_profil_user(discord_user_id)
             embed = discord.Embed(title=f"Profile Genshin Impact de {user}", color=0xAD0DE4)
-            embed.set_thumbnail(url=str(ctx.author.avatar_url))
+            embed.set_thumbnail(url=str(user.avatar_url))
             embed.add_field(name=f"__Les informations de son compte genshin :__",
                             value=f"🦲 Le nom = `{p[0][0]}`\n💯 Niveau d'aventure `{p[0][3]}`\n👾UID = `{p[0][2]}`")
             embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
@@ -47,12 +47,32 @@ class genshin(commands.Cog):
     async def errorgprofile(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
             embed = discord.Embed(title="🤖⚠️ [ERREUR] Il manque un Argument ! Recommence avec `!gprofile @quelqu'un`",
-            color=0xAD0DE4)
+            color=0xCF1600)
             await ctx.send(embed=embed)
 
     @gprofilecreate.error
     async def errorgprofilecreate(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
             embed = discord.Embed(title="🤖⚠️ [ERREUR] Il manque un Argument ! Recommence avec `!gprofilecreate <pseudo> <ar> <uid>`",
-            color=0xAD0DE4)
+            color=0xCF1600)
             await ctx.send(embed=embed)
+
+    @commands.command(brief="Mets à jours ton niveau d'aventure")
+    async def updatear(self, ctx, ar):
+        print(ar)
+        discord_user_id = str(ctx.author.id)
+        database_handler.update_ar(str(ar), discord_user_id)
+        embed = discord.Embed(
+            title="✅ - Ton niveau d'aventure à été mis à jours sur ton profile genshin impact, !gprofile @toi -> pour voir",
+            color=0xAD0DE4)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+        await ctx.send(embed=embed)
+
+    """
+    @updatear.error
+    async def errorar(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            embed = discord.Embed(title="🤖⚠️ [ERREUR] Il manque un Argument ! Recommence avec `!updatear <ar>`",
+            color=0xCF1600)
+            await ctx.send(embed=embed)
+    """

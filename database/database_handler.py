@@ -55,6 +55,17 @@ class DatabaseHandler():
         self.con.close()
         return result
 
+    def update_ar(self, ar, discord_user_id):
+        self.con.connect()
+        cursor = self.con.cursor()
+        query = f"UPDATE makoto_genshin SET ar = %s WHERE discord_user_id = %s"
+        cursor.execute(query,(ar, discord_user_id))
+        cursor.close()
+        self.con.commit()
+        self.con.close()
+        print("cc")
+
+########################################################################################################################
     def add_message(self,servname, servid, messid, chanid):
         self.con.connect()
         cursor = self.con.cursor()
