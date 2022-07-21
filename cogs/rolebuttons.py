@@ -48,29 +48,6 @@ class role_button(commands.Cog):
                     await payload.member.add_roles(a)
                     await payload.member.send(f"Le role **{r}** t'a été ajouté avec succès !")
 
-    @commands.Cog.listener('on_component')
-    async def on_component(self, ctx):
-        await ctx.defer(
-            ignore=True
-        )
-        ide = ctx.component["custom_id"]
-        ro = ctx.author.roles
-        for r in role:
-            a = discord.utils.get(ctx.author.guild.roles, name=r)
-
-            #for g in ro:
-            #    if str(g) == r:
-            #        await ctx.send("Tu as déjà le role !", hidden=True)
-            #        await ctx.author.remove_roles(a)
-            #        print("a")
-            #        return
-
-            e,rl = r.split("・")
-            if ide == rl.lower():
-                await ctx.author.add_roles(a)
-                await ctx.send(f"Le role **{r}** t'a été ajouté avec succès !", hidden=True)
-                print("b")
-
     @commands.command(brief='Commande administrateur pour creation des channels')
     async def crc(self, ctx):
         g = ctx.guild

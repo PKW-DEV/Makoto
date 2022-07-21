@@ -7,6 +7,7 @@ import cogs.logs
 import cogs.rolebuttons
 import cogs.join
 import cogs.genshin
+import cogs.bestie
 
 import os
 from dotenv import load_dotenv
@@ -22,11 +23,8 @@ slash = SlashCommand(bot, sync_commands=True)
 
 @bot.event
 async def on_ready():
-    c = bot.get_channel(990927066377617439)
-    u = await bot.fetch_user(264335766216376320)
-    #await u.send("Makoto est de retour sur le web")
-    #await c.send("```MAKOTO STARTED SUCCESSFULLY```")
     print("MAKOTO started successfully !")
+
 """
 @bot.event
 async def on_message(message):
@@ -63,6 +61,7 @@ class MyHelp(commands.HelpCommand):
 
 bot.help_command = MyHelp()
 
+bot.add_cog(cogs.bestie.bestie(bot))
 bot.add_cog(cogs.logs.logs(bot))
 bot.add_cog(cogs.rolebuttons.role_button(bot))
 bot.add_cog(cogs.join.member_join(bot))

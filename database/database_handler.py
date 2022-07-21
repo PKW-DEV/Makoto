@@ -64,6 +64,26 @@ class DatabaseHandler():
         self.con.commit()
         self.con.close()
         print("cc")
+########################################################################################################################
+    def add_help_genshin(self, ar, uid, user_id, why, voc, etat):
+        self.con.connect()
+        cursor = self.con.cursor()
+        query = f"INSERT INTO makoto_genshin_help (ar,uid,user_id,why,voc,etat) VALUES (%s,%s,%s,%s,%s,%s);"
+        cursor.execute(query,(ar, uid, user_id, why, voc, etat))
+        cursor.close()
+        self.con.commit()
+        self.con.close()
+
+    def check_if_user_need_help(self, user_id):
+        self.con.connect()
+        cursor = self.con.cursor()
+        query = f"SELECT * FROM makoto_genshin_help WHERE user_id = %s;"
+        cursor.execute(query,(user_id))
+        result = cursor.fetchall()
+        cursor.close()
+        self.con.close()
+        return len(result) == 0
+    
 
 ########################################################################################################################
     def add_message(self,servname, servid, messid, chanid):
