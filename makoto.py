@@ -26,27 +26,6 @@ slash = SlashCommand(bot, sync_commands=True)
 async def on_ready():
     print("MAKOTO started successfully !")
 
-"""
-@bot.event
-async def on_message(message):
-    await bot.process_commands(message)
-    if ["PKW","ksar","pierre","pkw"] in message.content :
-        if 944936702143778879 == message.author.id :
-            return
-        else:
-            u = await bot.fetch_user(264335766216376320)
-            author = message.author
-            chan = message.channel
-            s = message.guild
-            await u.send(f"WORD DETECTION | **{author.mention}** t'a mentionné dans {chan.mention} sur le serveur **{s}**. Contenu du message ```{message.content}```")
-
-    if bot.user.mentioned_in(message):
-        if "@here" or "@everyone" in message.content:
-            return
-        else:
-            chan = bot.get_channel(990909559906377729)
-            await message.channel.send(f"Hello ! Je suis plein developpement, certaines fonctionnalités ne sont donc pas disponible, regarde le channel {chan.mention} pour suivre mon developpement !")
-"""
 class MyHelp(commands.HelpCommand):
     async def send_bot_help(self, mapping):
         embed = discord.Embed(title="Aide aux commandes Makoto.", color=0xAD0DE4)
