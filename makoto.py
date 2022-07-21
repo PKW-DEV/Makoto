@@ -8,6 +8,7 @@ import cogs.rolebuttons
 import cogs.join
 import cogs.genshin
 import cogs.bestie
+import cogs.giveaway
 
 import os
 from dotenv import load_dotenv
@@ -66,4 +67,6 @@ bot.add_cog(cogs.logs.logs(bot))
 bot.add_cog(cogs.rolebuttons.role_button(bot))
 bot.add_cog(cogs.join.member_join(bot))
 bot.add_cog(cogs.genshin.genshin(bot))
+bot.add_cog(cogs.giveaway.event(bot))
+
 bot.run(TOKEN)
