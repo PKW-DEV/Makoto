@@ -35,7 +35,7 @@ class genshin(commands.Cog):
         c = database_handler.check_if_user_exit(discord_user_id)
 
         if c == False:
-            embed = discord.Embed(title="🤖⚠[ERREUR] Le compte que tu as essayé de chercher n'existe pas",
+            embed = discord.Embed(title="🤖⚠[ERREUR] Le compte que tu as essayé de chercher n'existe pas | !gprofilecreate pour en créer un !",
                                   color=0xAD0DE4)
             await ctx.send(embed=embed)
         else:
